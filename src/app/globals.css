@@ -1,26 +1,198 @@
 @import "tailwindcss";
 
+@theme {
+  --color-ivory: #FAF6F0;
+  --color-ivory-light: #FFFDF9;
+  --color-ivory-dark: #F0EBE3;
+
+  --color-sage: #7A8B6F;
+  --color-sage-light: #9AAB8F;
+  --color-sage-dark: #5A6B4F;
+  --color-sage-deep: #2F4538;
+
+  --color-gold: #C5A55A;
+  --color-gold-light: #E8D5A3;
+  --color-gold-dark: #A68B3E;
+  --color-gold-shimmer: #D4AF37;
+
+  --color-charcoal: #2D2A26;
+  --color-taupe: #8B7D6B;
+  --color-blush: #F5E6E0;
+
+  --font-display: var(--font-playfair), Georgia, serif;
+  --font-script: var(--font-script), cursive;
+  --font-body: var(--font-body), Garamond, serif;
+  --font-arabic: var(--font-arabic), "Traditional Arabic", serif;
+  --font-monogram: var(--font-monogram), serif;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-ivory: #FAF6F0;
+  --text-charcoal: #2D2A26;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Typography helper classes */
+.font-display {
+  font-family: var(--font-playfair), Georgia, serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.font-script {
+  font-family: var(--font-script), cursive;
+}
+
+.font-body {
+  font-family: var(--font-body), Garamond, serif;
+}
+
+.font-arabic {
+  font-family: var(--font-arabic), "Traditional Arabic", serif;
+  direction: rtl;
+}
+
+.font-monogram {
+  font-family: var(--font-monogram), serif;
+}
+
+/* Gold Gradient & Text Shimmer */
+.gold-gradient {
+  background: linear-gradient(135deg, #A68B3E 0%, #D4AF37 40%, #FFF3D1 60%, #C5A55A 100%);
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #9C7A2E 0%, #D4AF37 35%, #F5E2A8 50%, #B8923F 75%, #7D5E1B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% auto;
+  animation: shimmer 6s linear infinite;
+}
+
+.gold-border {
+  border-color: #C5A55A;
+}
+
+.gold-border-gradient {
+  border-image: linear-gradient(to bottom, #C5A55A, #E8D5A3, #A68B3E) 1;
+}
+
+/* Subtle Box Shadow for Royal Cards */
+.royal-shadow {
+  box-shadow: 0 10px 30px -10px rgba(122, 139, 111, 0.2),
+              0 20px 40px -15px rgba(197, 165, 90, 0.15);
+}
+
+.royal-glow {
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.35);
+}
+
+/* Keyframe Animations */
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes swing {
+  0%, 100% {
+    transform: rotate(-3deg);
+    transform-origin: top center;
+  }
+  50% {
+    transform: rotate(3deg);
+    transform-origin: top center;
+  }
+}
+
+@keyframes floatParticle {
+  0% {
+    transform: translateY(0px) translateX(0px);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.8;
+  }
+  80% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-400px) translateX(25px);
+    opacity: 0;
+  }
+}
+
+@keyframes petalDrift {
+  0% {
+    transform: translateY(-20px) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.7;
+  }
+  85% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(600px) translateX(60px) rotate(180deg);
+    opacity: 0;
+  }
+}
+
+@keyframes pulseGently {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+
+@keyframes bounceSlow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+.animate-swing {
+  animation: swing 4.5s ease-in-out infinite;
+}
+
+.animate-swing-delayed {
+  animation: swing 5s ease-in-out -2.5s infinite;
+}
+
+.animate-pulse-gently {
+  animation: pulseGently 3s ease-in-out infinite;
+}
+
+.animate-bounce-slow {
+  animation: bounceSlow 2s ease-in-out infinite;
+}
+
+/* Custom Scrollbar for Luxury Feel */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FAF6F0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C5A55A;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #A68B3E;
 }
