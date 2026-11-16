@@ -5,10 +5,14 @@ import { Invitation } from '@/components/Invitation';
 import { EventDetails } from '@/components/EventDetails';
 import { Prayer } from '@/components/Prayer';
 import { Closing } from '@/components/Closing';
+import { BackgroundMusic } from '@/components/BackgroundMusic';
 
 export default function Home() {
   return (
     <main className="relative w-full min-h-screen overflow-x-hidden bg-ivory selection:bg-gold/30 selection:text-sage-deep">
+      {/* Background Music Player */}
+      <BackgroundMusic />
+
       {/* § 1 — Grand Entrance (Bismillah + Floating Particles + Swaying Lanterns) */}
       <GrandEntrance />
 
